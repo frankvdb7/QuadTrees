@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using System.Drawing;
 using QuadTrees.QTreeRectF;
 
 namespace QuadTrees.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class TestRectangle
     {
         class QTreeObject: IRectFQuadStorable
@@ -26,7 +20,7 @@ namespace QuadTrees.Tests
                 _rect = rect;
             }
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQuery()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -39,7 +33,7 @@ namespace QuadTrees.Tests
             var list = qtree.GetObjects(new RectangleF(9, 9, 20, 20));
             Assert.AreEqual(1, list.Count);
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQueryOutput()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -53,7 +47,7 @@ namespace QuadTrees.Tests
             qtree.GetObjects(new RectangleF(9, 9, 20, 20), list);
             Assert.AreEqual(1, list.Count);
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQueryEnum()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -66,7 +60,7 @@ namespace QuadTrees.Tests
             var list = qtree.EnumObjects(new RectangleF(9, 9, 20, 20));
             Assert.AreEqual(1, list.Count());
         }
-        [TestCase]
+        [TestMethod]
         public void TestListGetAll()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -79,7 +73,7 @@ namespace QuadTrees.Tests
             var list = qtree.GetAllObjects();
             Assert.AreEqual(2, list.Count());
         }
-        [TestCase]
+        [TestMethod]
         public void TestAddMany()
         {
             Random r = new Random(1000);
@@ -96,7 +90,7 @@ namespace QuadTrees.Tests
             Assert.AreEqual(result.Distinct().Count(), result.Count);
         }
 
-        [TestCase]
+        [TestMethod]
         public void TestBulkAddManyThreaded()
         {
             Random r = new Random(1000);
@@ -115,7 +109,7 @@ namespace QuadTrees.Tests
             Assert.AreEqual(result.Distinct().Count(), result.Count);
         }
 
-        [TestCase]
+        [TestMethod]
         public void TestBulkAddMany()
         {
             Random r = new Random(1000);
@@ -134,7 +128,7 @@ namespace QuadTrees.Tests
             Assert.AreEqual(result.Distinct().Count(), result.Count);
         }
 
-        [TestCase]
+        [TestMethod]
         public void TestAddManySame()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -150,7 +144,7 @@ namespace QuadTrees.Tests
             Assert.AreEqual(10000, result.Count);
         }
 
-        [TestCase]
+        [TestMethod]
         public void TestBulkAddManySame()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -166,7 +160,7 @@ namespace QuadTrees.Tests
             Assert.AreEqual(10000, result.Count);
         }
 
-        [TestCase]
+        [TestMethod]
         public void TestAddSameIndividual()
         {
             QuadTreeRectF<QTreeObject> qtree = new QuadTreeRectF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using System.Drawing;
 using QuadTrees.QTreeRectF;
 
 namespace QuadTrees.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class TestRectPoint
     {
         class QTreeObject : IRectFQuadStorable
@@ -26,7 +20,7 @@ namespace QuadTrees.Tests
                 _rect = rect;
             }
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQuery()
         {
             QuadTreeRectPointFInverse<QTreeObject> qtree = new QuadTreeRectPointFInverse<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -39,7 +33,7 @@ namespace QuadTrees.Tests
             var list = qtree.GetObjects(new PointF(11,11));
             Assert.AreEqual(1, list.Count);
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQueryOutput()
         {
             var list = new List<QTreeObject>();
@@ -53,7 +47,7 @@ namespace QuadTrees.Tests
             qtree.GetObjects(new PointF(11, 11), list);
             Assert.AreEqual(1, list.Count);
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQueryEnum()
         {
             QuadTreeRectPointFInverse<QTreeObject> qtree = new QuadTreeRectPointFInverse<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -66,7 +60,7 @@ namespace QuadTrees.Tests
             var list = qtree.EnumObjects(new PointF(11, 11));
             Assert.AreEqual(1, list.Count());
         }
-        [TestCase]
+        [TestMethod]
         public void TestListGetAll()
         {
             QuadTreeRectPointFInverse<QTreeObject> qtree = new QuadTreeRectPointFInverse<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));

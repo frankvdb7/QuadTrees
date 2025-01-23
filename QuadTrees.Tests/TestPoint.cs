@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using System.Drawing;
 using QuadTrees.QTreePointF;
-using QuadTrees.QTreeRectF;
 
 namespace QuadTrees.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class TestPoint
     {
         class QTreeObject: IPointFQuadStorable
@@ -27,7 +20,7 @@ namespace QuadTrees.Tests
                 _rect = rect;
             }
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQuery()
         {
             QuadTreePointF<QTreeObject> qtree = new QuadTreePointF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -40,7 +33,7 @@ namespace QuadTrees.Tests
             var list = qtree.GetObjects(new RectangleF(9, 9, 20, 20));
             Assert.AreEqual(1, list.Count);
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQueryOutput()
         {
             QuadTreePointF<QTreeObject> qtree = new QuadTreePointF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -54,7 +47,7 @@ namespace QuadTrees.Tests
             qtree.GetObjects(new RectangleF(9, 9, 20, 20), list);
             Assert.AreEqual(1, list.Count);
         }
-        [TestCase]
+        [TestMethod]
         public void TestListQueryEnum()
         {
             QuadTreePointF<QTreeObject> qtree = new QuadTreePointF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
@@ -67,7 +60,7 @@ namespace QuadTrees.Tests
             var list = qtree.EnumObjects(new RectangleF(9, 9, 20, 20));
             Assert.AreEqual(1, list.Count());
         }
-        [TestCase]
+        [TestMethod]
         public void TestListGetAll()
         {
             QuadTreePointF<QTreeObject> qtree = new QuadTreePointF<QTreeObject>(new RectangleF(float.MinValue/2,float.MinValue/2,float.MaxValue,float.MaxValue));
